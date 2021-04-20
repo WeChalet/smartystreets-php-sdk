@@ -27,7 +27,7 @@ class NativeSender implements Sender {
         if ($this->debugMode)
             $this->printDebugInfo($ch, $smartyRequest, $payload);
 
-        $connectCode = curl_getinfo($ch, CURLINFO_HTTP_CONNECTCODE);
+        $connectCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
         if ($payload === FALSE && $connectCode != 200) {
             $errorMessage = curl_error($ch);
             curl_close($ch);
